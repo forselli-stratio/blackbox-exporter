@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 cat <<EOF > /config.yml
 modules:
   dns_tcp:
@@ -9,4 +9,4 @@ modules:
       query_name: ${QUERY_NAME}
 EOF
 
-/usr/local/bin/blackbox_exporter --config.file /config.yml --web.listen-address=:9116
+/bin/blackbox_exporter --config.file=/config.yml --web.listen-address=:9116
