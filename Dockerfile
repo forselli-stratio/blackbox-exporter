@@ -2,8 +2,8 @@ FROM prom/blackbox-exporter:master
 
 USER root
 ADD config.yml /etc/blackbox_exporter/config.yml
-ADD entrypoint.sh /entrypoint.sh
 
-RUN chmod +x /entrypoint.sh
+EXPOSE 9116
 
-ENTRYPOINT [ "/entrypoint.sh" ]
+ENTRYPOINT  [ "/bin/blackbox_exporter" ]
+CMD         [ "--config.file=/etc/blackbox_exporter/config.yml","--web.listen-address=:9116" ]

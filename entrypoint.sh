@@ -1,1 +1,0 @@
-/bin/blackbox_exporter --config.file=/config/blackbox.yml --web.listen-address=:9116
