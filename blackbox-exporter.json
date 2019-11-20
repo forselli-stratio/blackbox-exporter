@@ -1,0 +1,75 @@
+{
+  "volumes": null,
+  "id": "/exporters/blackbox-exporter",
+  "cmd": null,
+  "args": null,
+  "user": null,
+  "env": {
+    "VAULT_HOST": "vault.service.eos.pre.air.hospitales.sanitas.dom",
+    "QUERY_NAME": "ad.sanitas.dom",
+    "LOG_LEVEL_EXPORTER": "info",
+    "VAULT_PORT": "8200"
+  },
+  "instances": 1,
+  "cpus": 0.05,
+  "mem": 128,
+  "disk": 0,
+  "gpus": 0,
+  "executor": null,
+  "constraints": null,
+  "fetch": null,
+  "storeUrls": null,
+  "backoffSeconds": 1,
+  "backoffFactor": 1.15,
+  "maxLaunchDelaySeconds": 3600,
+  "container": {
+    "docker": {
+      "image": "master.mesos:5002/stratio/blackbox-test-udp:0.2",
+      "forcePullImage": false,
+      "privileged": false,
+      "network": "HOST"
+    },
+    "type": "DOCKER",
+    "volumes": [
+      {
+        "containerPath": "/etc/resolv.conf",
+        "hostPath": "/etc/resolv.conf",
+        "mode": "RO"
+      }
+    ]
+  },
+  "healthChecks": [
+    {
+      "protocol": "HTTP",
+      "path": "/metrics",
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 3,
+      "port": 9116,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "readinessChecks": null,
+  "dependencies": null,
+  "upgradeStrategy": {
+    "minimumHealthCapacity": 1,
+    "maximumOverCapacity": 1
+  },
+  "labels": null,
+  "acceptedResourceRoles": null,
+  "residency": null,
+  "secrets": {
+    "role": {
+      "source": "open"
+    }
+  },
+  "taskKillGracePeriodSeconds": null,
+  "portDefinitions": [
+    {
+      "protocol": "tcp",
+      "port": 0
+    }
+  ],
+  "requirePorts": false
+}
