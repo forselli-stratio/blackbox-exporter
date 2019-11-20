@@ -5,8 +5,8 @@
   "args": null,
   "user": null,
   "env": {
-    "VAULT_HOST": "vault.service.eos.pre.air.hospitales.sanitas.dom",
-    "QUERY_NAME": "ad.sanitas.dom",
+    "VAULT_HOST": "vault.service.{{json_consul_domain}}",
+    "QUERY_NAME": "test.name.com",
     "LOG_LEVEL_EXPORTER": "info",
     "VAULT_PORT": "8200"
   },
@@ -24,7 +24,7 @@
   "maxLaunchDelaySeconds": 3600,
   "container": {
     "docker": {
-      "image": "master.mesos:5002/stratio/blackbox-test-udp:0.2",
+      "image": "blackbox-exporter-dns:0.1",
       "forcePullImage": false,
       "privileged": false,
       "network": "HOST"
